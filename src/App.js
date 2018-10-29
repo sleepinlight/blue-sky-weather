@@ -3,11 +3,12 @@ import {Container, Row, Col, Button} from 'reactstrap';
 import axios from 'axios';
 import dayicon from './day.svg';
 import HomeView from './components/HomeView';
+import AppRouter from './components/AppRouter';
 import fetchLocation from './utils/UserLocation';
 import retrieveWeather from './services/DarkSky';
 import dayStateCalc from './utils/DayStateCalculator';
-
 import './App.css';
+
 
 class App extends Component {
   constructor(props) {
@@ -42,6 +43,9 @@ class App extends Component {
            <p>{dayStateCalc(obj.currentTime, obj.sunrise) ? "within shift hours" : "not within shift hours"}</p>
           <Button onClick={this.determineLocation}>Refresh</Button>
         </header>
+        <footer>
+          <AppRouter className="app-router-menu"/>
+        </footer>
       </div>
     );
   }
