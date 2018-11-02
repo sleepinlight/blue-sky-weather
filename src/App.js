@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Container, Row, Col, Button} from 'reactstrap';
+import {Container, Row, Col, Button, Alert} from 'reactstrap';
 import axios from 'axios';
 import dayicon from './day.svg';
 import HomeView from './components/HomeView';
@@ -52,9 +52,6 @@ class App extends Component {
   determineLocation = () => {
       if (navigator.geolocation) {
         fetchLocation(this.setLocation);
-      }
-      else {
-        console.log('Either your browser does not support geolocation, or you have denied permission!');
       }
     }
   

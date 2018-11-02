@@ -2,6 +2,7 @@ import axios from 'axios';
 import DarkSkyAPI from '../keys';
 
 const retrieveWeather = (lat, long, onSuccess) => {
+  if(DarkSkyAPI != null) {
     const proxy = 'https://cors-anywhere.herokuapp.com/';
     const darksky = 'https://api.darksky.net/forecast/';
     const apikey = DarkSkyAPI;
@@ -13,6 +14,10 @@ const retrieveWeather = (lat, long, onSuccess) => {
   .catch(function (error) {
     console.log(error);
   });
+  } else {
+    //TODO: Better implementation of API Key checking
+   console.log("please provide an API Key");
+  } 
 };
 
 export default retrieveWeather;

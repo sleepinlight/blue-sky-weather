@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Container, Row, Col, Button} from 'reactstrap';
-import WeatherIcon from './WeatherIcon';
+import { WeatherIcon } from './shared/index';
 
 export default class HomeView extends Component {
 
