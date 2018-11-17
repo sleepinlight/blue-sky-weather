@@ -7,7 +7,7 @@ import AppRouter from './components/AppRouter';
 import fetchLocation from './utils/UserLocation';
 import retrieveWeather from './services/DarkSky';
 import dayStateCalc from './utils/DayStateCalculator';
-import './App.css';
+import './App.scss';
 
 
 class App extends Component {
@@ -27,24 +27,17 @@ class App extends Component {
     };
   }
   render() {
-    let obj = this.state;
     return (
       <div className="App">
         <header className="App-header">
-          <HomeView 
-            backdrop={this.state.backdrop}
-            icon={this.state.icon}
-            currentTemp={this.state.currentTemp}
-            currentForecast={this.state.currentForecast}
-            
-           />
-           <p>sunset: {obj.sunset}</p>
-           <p>current: {obj.currentTime}</p>
-           <p>{dayStateCalc(obj.currentTime, obj.sunrise) ? "within shift hours" : "not within shift hours"}</p>
-          <Button onClick={this.determineLocation}>Refresh</Button>
+          <h2>Blue Sky Weather</h2>
         </header>
+          <div className="main">
+          <AppRouter className="app-router-menu" {...this.state}/>
+          </div>
+        
         <footer>
-          <AppRouter className="app-router-menu"/>
+         
         </footer>
       </div>
     );

@@ -3,16 +3,15 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import HomeView from "./HomeView";
 import SevenDayForecast from "./SevenDayForecast";
 
-const Index = () => <h2>Current</h2>;
-const About = () => <h2>Forecast</h2>;
-
-const AppRouter = () => (
+const AppRouter = ({...props}) => (
+  
   <Router>
     <div>
       <nav>
-        <ul>
+        <ul className="forecast-panel-menu">
           <li>
             <Link to="/">Home</Link>
+            
           </li>
           <li>
             <Link to="/forecast/">Forecast</Link>
@@ -20,8 +19,8 @@ const AppRouter = () => (
         </ul>
       </nav>
 
-      <Route path="/" exact component={HomeView} />
-      <Route path="/forecast/" component={SevenDayForecast} />
+      <Route path="/" exact render={() => <HomeView {...props}/> }/>
+      <Route path="/forecast/" render={() => <SevenDayForecast {...props}/> } />
     </div>
   </Router>
 );
