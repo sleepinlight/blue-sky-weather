@@ -23,7 +23,8 @@ class App extends Component {
       currentTemp: '',
       currentTime:'',
       sunset: '',
-      sunrise: ''
+      sunrise: '',
+      sevenday: []
     };
   }
   render() {
@@ -64,7 +65,8 @@ class App extends Component {
       currentTemp: payload.data.currently.temperature,
       currentTime: payload.data.currently.time,
       sunset: payload.data.daily.data[0].sunsetTime,
-      sunrise: payload.data.daily.data[0].sunriseTime
+      sunrise: payload.data.daily.data[0].sunriseTime,
+      sevenday: payload.data.daily.data
     });
   }
 }

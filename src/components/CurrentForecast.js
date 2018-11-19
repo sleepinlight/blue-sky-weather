@@ -13,6 +13,7 @@ const CurrentForecast = ({...forecast}) => (
         <p>current: {forecast.currentTime}</p>
         <p>{dayStateCalc(forecast.currentTime, forecast.sunrise) ? "within shift hours" : "not within shift hours"}</p>
         <Button onClick={forecast.determineLocation}>Refresh</Button>
+        
     </div>      
 );
 

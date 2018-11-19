@@ -7,7 +7,12 @@ const AppRouter = ({...props}) => (
   
   <Router>
     <div>
-      <nav>
+      
+
+      <Route path="/" exact render={() => <HomeView {...props}/> }/>
+      <Route path="/forecast/" render={() => <SevenDayForecast {...props}/> } />
+
+      <nav className="app-router-nav">
         <ul className="forecast-panel-menu">
           <li>
             <Link to="/">Home</Link>
@@ -18,9 +23,6 @@ const AppRouter = ({...props}) => (
           </li>
         </ul>
       </nav>
-
-      <Route path="/" exact render={() => <HomeView {...props}/> }/>
-      <Route path="/forecast/" render={() => <SevenDayForecast {...props}/> } />
     </div>
   </Router>
 );

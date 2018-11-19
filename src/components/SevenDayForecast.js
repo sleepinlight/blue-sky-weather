@@ -1,19 +1,17 @@
 import React, {Component} from 'react';
-
-/* export default class SevenDayForecast extends Component {
-    render() {
-        return (
-        <div>
-            <h2>Seven Day Forecast</h2>
-        </div>
-        );
-    }
-} */
+import {ForecastDayItem} from './shared';
 
 const SevenDayForecast = ({...props}) => (
     <div>
         <h2>Seven Day Forecast</h2>
-        <h3>{props.sunset}</h3>
+        {props.sevenday.map((item, i) => (
+            <ForecastDayItem 
+                low={item.apparentTemperatureLow} 
+                high={item.apparentTemperatureHigh} 
+                icon={item.icon} 
+                condition={item.summary} 
+                key={i} />
+        ))}
     </div>
 );
 
