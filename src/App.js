@@ -6,6 +6,7 @@ import HomeView from './components/HomeView';
 import AppRouter from './components/AppRouter';
 import fetchLocation from './utils/UserLocation';
 import retrieveWeather from './services/DarkSky';
+import {retrieveCoords} from './services/Geocode';
 import dayStateCalc from './utils/DayStateCalculator';
 import './App.scss';
 
@@ -24,6 +25,7 @@ class App extends Component {
       currentTime:'',
       sunset: '',
       sunrise: '',
+      alerts: [],
       sevenday: []
     };
   }
@@ -57,6 +59,8 @@ class App extends Component {
     this.setState({lat:data.coords.latitude, long:data.coords.longitude}, () => {
       retrieveWeather(this.state.lat, this.state.long, this.setCurrentForecast)
   });
+  //TODO: set actual location and pass onSuccess function
+    retrieveCoords("786 Florence St, Baton Rouge, LA");
   }
 
   setCurrentForecast = (payload) => {
@@ -66,6 +70,7 @@ class App extends Component {
       currentTime: payload.data.currently.time,
       sunset: payload.data.daily.data[0].sunsetTime,
       sunrise: payload.data.daily.data[0].sunriseTime,
+      alerts: payload.data.alerts,
       sevenday: payload.data.daily.data
     });
   }

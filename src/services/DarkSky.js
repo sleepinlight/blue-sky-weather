@@ -1,5 +1,5 @@
 import axios from 'axios';
-import DarkSkyAPI from '../keys';
+import {DarkSkyAPI} from '../keys';
 
 const retrieveWeather = (lat, long, onSuccess) => {
   if(DarkSkyAPI != null) {
