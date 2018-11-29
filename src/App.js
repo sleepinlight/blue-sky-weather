@@ -6,7 +6,7 @@ import HomeView from './components/HomeView';
 import AppRouter from './components/AppRouter';
 import fetchLocation from './utils/UserLocation';
 import retrieveWeather from './services/DarkSky';
-import {retrieveCoords} from './services/Geocode';
+import {retrieveCoords, retrieveCityName} from './services/Geocode';
 import dayStateCalc from './utils/DayStateCalculator';
 import './App.scss';
 
@@ -26,7 +26,8 @@ class App extends Component {
       sunset: '',
       sunrise: '',
       alerts: [],
-      sevenday: []
+      sevenday: [],
+      locationName:''
     };
   }
   render() {
@@ -34,6 +35,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h2>Blue Sky Weather</h2>
+          <h4>{this.state.locationName ? this.state.locationName : ''}</h4>
         </header>
           <div className="main">
           <AppRouter className="app-router-menu" {...this.state}/>
@@ -58,9 +60,19 @@ class App extends Component {
   setLocation = (data) => {
     this.setState({lat:data.coords.latitude, long:data.coords.longitude}, () => {
       retrieveWeather(this.state.lat, this.state.long, this.setCurrentForecast)
+      retrieveCityName(this.state.lat, this.state.long, this.setLocationName);
   });
   //TODO: set actual location and pass onSuccess function
-    retrieveCoords("786 Florence St, Baton Rouge, LA");
+    
+  }
+
+  setLocationName = (res) => {
+    let city = res.data.results[0].address_components[3].short_name;
+    let state = res.data.results[0].address_components[6].short_name;
+    let currentLocation = `${city}, ${state}`;
+    this.setState({
+      locationName: currentLocation
+    });
   }
 
   setCurrentForecast = (payload) => {

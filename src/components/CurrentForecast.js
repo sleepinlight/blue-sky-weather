@@ -8,7 +8,8 @@ const CurrentForecast = ({...forecast}) => (
         <WeatherIcon icon={forecast.icon} className="large-icon"/>
         <h1>{forecast.currentTemp}</h1>
         <h2>{forecast.currentForecast}</h2>
-        {forecast.alerts.map((alert, i) => (
+       
+        {forecast.alerts && forecast.alerts.map((alert, i) => (
             <AlertBanner currentWeatherAlerts={alert.title} key={i} />
         ))}
         <hr/>
