@@ -1,4 +1,3 @@
-
 const dayStateCalc = (currentState, comparedState) => {
     const detractor = 3600;
     let upperTransitionalLimit = comparedState + detractor;

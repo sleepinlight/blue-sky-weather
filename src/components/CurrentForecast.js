@@ -3,6 +3,7 @@ import {Button} from 'reactstrap';
 import { WeatherIcon, AlertBanner } from './shared/index';
 import {dayStateCalc, FormattedTemperature} from '../utils/index';
 
+//TODO: Find a way to check whether within sunrise or sunset hours
 const CurrentForecast = ({...forecast}) => (
     <div>
         <WeatherIcon icon={forecast.icon} className="large-icon"/>
@@ -15,7 +16,8 @@ const CurrentForecast = ({...forecast}) => (
         <hr/>
         <p>sunset: {forecast.sunset}</p>
         <p>current: {forecast.currentTime}</p>
-        <p>{dayStateCalc(forecast.currentTime, forecast.sunrise) ? "within shift hours" : "not within shift hours"}</p>
+        
+        <p>{dayStateCalc(forecast.currentTime, forecast.sunset) ? "within shift hours" : "not within shift hours"}</p>
         <Button onClick={forecast.determineLocation}>Refresh</Button>
         
     </div>      

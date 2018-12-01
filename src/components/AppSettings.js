@@ -7,7 +7,7 @@ export default class AppSettings extends Component {
             <div>
                 <Container>
                     <Row>
-                        <Col xs={12}></Col>
+                        <Col xs={12}>User Configurable Settings</Col>
                     </Row>
                 </Container>
             </div>

@@ -7,7 +7,7 @@ import AppRouter from './components/AppRouter';
 import fetchLocation from './utils/UserLocation';
 import retrieveWeather from './services/DarkSky';
 import {retrieveCoords, retrieveCityName} from './services/Geocode';
-import dayStateCalc from './utils/DayStateCalculator';
+import {dayStateCalc, StoreLocation} from './utils/index';
 import './App.scss';
 
 
@@ -61,6 +61,7 @@ class App extends Component {
     this.setState({lat:data.coords.latitude, long:data.coords.longitude}, () => {
       retrieveWeather(this.state.lat, this.state.long, this.setCurrentForecast)
       retrieveCityName(this.state.lat, this.state.long, this.setLocationName);
+      StoreLocation('current-location', data);
   });
   }
 

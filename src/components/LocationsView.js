@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Container, Row, Col, Button} from 'reactstrap';
+import {CitySearch} from './shared/index';
 
 export default class LocationsView extends Component {
 
@@ -7,8 +8,8 @@ export default class LocationsView extends Component {
         return (
             <Container>
                 <Row>
-                    <Col>
-
+                    <Col xs={12}>
+                        <CitySearch/>
                     </Col>
                 </Row>
             </Container>
