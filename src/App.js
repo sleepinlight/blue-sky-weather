@@ -62,8 +62,6 @@ class App extends Component {
       retrieveWeather(this.state.lat, this.state.long, this.setCurrentForecast)
       retrieveCityName(this.state.lat, this.state.long, this.setLocationName);
   });
-  //TODO: set actual location and pass onSuccess function
-    
   }
 
   setLocationName = (res) => {

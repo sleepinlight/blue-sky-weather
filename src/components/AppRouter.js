@@ -15,11 +15,14 @@ const AppRouter = ({...props}) => (
       <nav className="app-router-nav">
         <ul className="forecast-panel-menu">
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/"><i className="fa fa-sun-o" aria-hidden="true"></i></Link>
             
           </li>
           <li>
-            <Link to="/forecast/">Forecast</Link>
+            <Link to="/forecast/"><i className="fa fa-hourglass" aria-hidden="true"></i></Link>
+          </li>
+          <li>
+            <Link to="/forecast/"><i className="fa fa-gear" aria-hidden="true"></i></Link>
           </li>
         </ul>
       </nav>

@@ -1,12 +1,12 @@
 import React from 'react';
 import {Button} from 'reactstrap';
 import { WeatherIcon, AlertBanner } from './shared/index';
-import {dayStateCalc} from '../utils/index';
+import {dayStateCalc, FormattedTemperature} from '../utils/index';
 
 const CurrentForecast = ({...forecast}) => (
     <div>
         <WeatherIcon icon={forecast.icon} className="large-icon"/>
-        <h1>{forecast.currentTemp}</h1>
+        <h1>{FormattedTemperature(forecast.currentTemp)}</h1>
         <h2>{forecast.currentForecast}</h2>
        
         {forecast.alerts && forecast.alerts.map((alert, i) => (
