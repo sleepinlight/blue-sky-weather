@@ -7,6 +7,7 @@ import AppRouter from './components/AppRouter';
 import fetchLocation from './utils/UserLocation';
 import retrieveWeather from './services/DarkSky';
 import {retrieveCoords, retrieveCityName} from './services/Geocode';
+import {ThemeContext, themes} from './services/ThemeContext';
 import {dayStateCalc, StoreLocation} from './utils/index';
 import './App.scss';
 
@@ -30,20 +31,23 @@ class App extends Component {
       locationName:''
     };
   }
+  //TODO: Test ThemeContext
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h2>Blue Sky Weather</h2>
-          <h4>{this.state.locationName ? this.state.locationName : ''}</h4>
-        </header>
-          <div className="main">
-          <AppRouter className="app-router-menu" {...this.state}/>
-          </div>
-        
-        <footer>
-         
-        </footer>
+        <ThemeContext.Provider value="light">
+          <header className="App-header" theme={this.context} >
+            <h2>Blue Sky Weather</h2>
+            <h4>{this.state.locationName ? this.state.locationName : ''}</h4>
+          </header>
+            <div className="main">
+            <AppRouter className="app-router-menu" {...this.state}/>
+            </div>
+          
+          <footer>
+          
+          </footer>
+        </ThemeContext.Provider>
       </div>
     );
   }

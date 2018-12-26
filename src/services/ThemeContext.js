@@ -1,5 +1,14 @@
 import React from 'react';
 
-const ThemeContext = React.createContext('clear-day');
+export const themes = {
+    light: {
+      foreground: '#000000',
+      background: '#eeeeee',
+    },
+    dark: {
+      foreground: '#ffffff',
+      background: '#222222',
+    },
+  };
 
-export default ThemeContext;
+export const ThemeContext = React.createContext(themes.light);

@@ -7,7 +7,6 @@ const HomeView = ({...props}) => (
         <Container>
             <Row>
                 <Col xs={12}>
-                    HOME
                     <CurrentForecast {...props}/>
                 </Col>
             </Row>

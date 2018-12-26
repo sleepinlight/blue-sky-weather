@@ -27,7 +27,6 @@ const retrieveCoords = (cityName, onSuccess) => {
         axios.get(endpoint)
         .then(function(response) {
             onSuccess(response);
-            console.log(response);
         })
       .catch(function (error) {
         console.log(error);

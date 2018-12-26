@@ -21,6 +21,7 @@ onSearchSubmit = (e) => {
 
 updateCurrentCity = (resp) => {
   let cityResult = resp.data.results[0].formatted_address;
+  console.log(resp.data.results[0].geometry.location.lat);
   this.setState({queriedCity: cityResult});
 }
 
