@@ -8,7 +8,7 @@ import fetchLocation from './utils/UserLocation';
 import retrieveWeather from './services/DarkSky';
 import {retrieveCoords, retrieveCityName} from './services/Geocode';
 import {ThemeContext, themes} from './services/ThemeContext';
-import {dayStateCalc, StoreLocation} from './utils/index';
+import {dayStateCalc, dayOfWeek, StoreLocation} from './utils/index';
 import './App.scss';
 
 
@@ -22,6 +22,7 @@ class App extends Component {
       currentForecast: '',
       icon: dayicon,
       daystate: '',
+      weekday: '',
       currentTemp: '',
       currentTime:'',
       sunset: '',

@@ -1,4 +1,4 @@
-import dayStateCalc from './DayStateCalculator';
+import {dayStateCalc, dayOfWeek} from './DayStateCalculator';
 import SkyColors from './SkyColors';
 import UserLocation from './UserLocation';
 import UserTime from './UserTime';
@@ -7,6 +7,7 @@ import StoreLocation from './StoreLocation';
 
 export {
     dayStateCalc,
+    dayOfWeek,
     SkyColors,
     UserLocation,
     UserTime,
