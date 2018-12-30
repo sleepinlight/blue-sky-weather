@@ -6,7 +6,6 @@ const SevenDayForecast = ({...props}) => (
     <div>
         <h2>Seven Day Forecast</h2>
         {props.sevenday.map((item, i) => (
-            
             <ForecastDayItem
                 dayName={dayOfWeek(item.time)} 
                 low={FormattedTemperature(item.apparentTemperatureLow)} 
