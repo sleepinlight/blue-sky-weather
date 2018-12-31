@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button} from 'reactstrap';
-import { WeatherIcon, AlertBanner } from './shared/index';
+import { WeatherIcon, AlertBanner, ForecastDayItem } from './shared/index';
 import {dayStateCalc, FormattedTemperature} from '../utils/index';
 
 //TODO: Find a way to check whether within sunrise or sunset hours

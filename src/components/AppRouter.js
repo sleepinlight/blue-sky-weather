@@ -24,7 +24,7 @@ const AppRouter = ({...props}) => (
             <Link to="/forecast/"><i className="fa fa-hourglass" aria-hidden="true"></i></Link>
           </li>
           <li>
-            <Link to="/locations/"><i class="fa fa-map-marker" aria-hidden="true"></i></Link>
+            <Link to="/locations/"><i className="fa fa-map-marker" aria-hidden="true"></i></Link>
           </li>
           <li>
             <Link to="/settings/"><i className="fa fa-gear" aria-hidden="true"></i></Link>

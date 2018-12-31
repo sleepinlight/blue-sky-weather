@@ -12,6 +12,8 @@ const SevenDayForecast = ({...props}) => (
                 high={FormattedTemperature(item.apparentTemperatureHigh)} 
                 icon={item.icon} 
                 condition={item.summary} 
+                sunriseTime={item.sunriseTime}
+                sunsetTime={item.sunsetTime}
                 key={i} />
         ))}
     </div>

@@ -48,6 +48,10 @@
   }
 }
 
+.collapse:not(.show) {
+  display: none;
+}
+
 .app-router-nav {
   position:fixed;
   bottom:0;
