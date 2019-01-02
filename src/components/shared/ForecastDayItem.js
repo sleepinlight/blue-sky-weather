@@ -36,8 +36,8 @@ export default class ForecastDayItem extends Component {
                             </div>
                         <span> {this.props.high}</span>
                     </div>
-                    <p>{preciseReadableTime(this.props.sunriseTime)}</p>
-                    <p>{preciseReadableTime(this.props.sunsetTime)}</p>
+                    <p>Sunrise: {preciseReadableTime(this.props.sunriseTime)}</p>
+                    <p>Sunset: {preciseReadableTime(this.props.sunsetTime)}</p>
                 </Collapse>
                 </CardBody>
                 
