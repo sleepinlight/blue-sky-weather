@@ -9,6 +9,7 @@ export const themes = {
       foreground: '#ffffff',
       background: '#222222',
     },
+    clearday: {}
   };
 
-export const ThemeContext = React.createContext(themes.light);
+export const ThemeContext = React.createContext(themes.clearday);

@@ -11,7 +11,7 @@ const CurrentForecast = ({...forecast}) => (
         <h2>{forecast.currentForecast}</h2>
        
         {forecast.alerts && forecast.alerts.map((alert, i) => (
-            <AlertBanner currentWeatherAlerts={alert.title} key={i} />
+            i === 0 || alert[i] !== alert[i-1] ? (<AlertBanner currentWeatherAlerts={alert.title} key={i} />) : null
         ))}
         <hr/>
         <p>sunset: {forecast.sunset}</p>
