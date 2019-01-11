@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
+import locations from './locations';
 
 export default combineReducers({
-  //individual reducers go here
-})
+  locations
+});

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {Container, Row, Col, Button, Alert} from 'reactstrap';
+import { connect } from 'react-redux';
+import {setCurrentLocation} from './actions/locations';
 import axios from 'axios';
 import dayicon from './day.svg';
 import HomeView from './components/HomeView';
@@ -11,6 +13,13 @@ import {ThemeContext, themes} from './services/ThemeContext';
 import {dayStateCalc, dayOfWeek, StoreLocation} from './utils/index';
 import './App.scss';
 
+const mapStateToProps = (state) => ({
+  locationMessage: state.locations.message
+});
+
+const mapDispatchToProps = ({
+  onUpdateMessage: setCurrentLocation
+});
 
 class App extends Component {
   constructor(props) {
@@ -36,6 +45,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <p>{this.props.locationMessage}</p>
+      
+    <button 
+      /*TODO: Make this work!!!!!! () => this.props.onUpdateMessage("city2", "this is from redux")*/></button>
         <ThemeContext.Provider value="light">
           <header className="App-header" theme={this.context} >
             <h2>Blue Sky Weather</h2>
@@ -92,4 +105,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
