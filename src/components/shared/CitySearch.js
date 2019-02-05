@@ -1,11 +1,27 @@
 import React, { Component } from 'react'
 import {retrieveCoords} from '../../services/Geocode.js';
+import { connect } from 'react-redux';
+import {addSavedLocation, setCurrentLocation} from '../../actions/locations';
 
-export default class CitySearch extends Component {
- state = {
-   query: '',
-   queriedCity: ''
- }
+const mapStateToProps = (state) => ({
+  savedLocations: state.locations.savedLocations,
+  currentLocation: state.locations.currentLocation
+});
+
+const mapDispatchToProps = dispatch => ({
+  onAddSavedLocation: (location) => dispatch(addSavedLocation(location)),
+  onSetCurrentLocation: (location) => dispatch(setCurrentLocation(location))
+})
+
+class CitySearch extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      query: '',
+      queriedCity: ''
+    };
+  }
+ 
 
  handleInputChange = () => {
    this.setState({
@@ -30,6 +46,7 @@ updateCurrentCity = (resp) => {
      <form className="city-search-form"
       onSubmit={this.onSearchSubmit}
      >
+     <h1>{this.props.currentLocation}</h1>
        <input
          placeholder="Search a Location..."
          ref={input => this.search = input}
@@ -37,8 +54,16 @@ updateCurrentCity = (resp) => {
        />
        <button type="submit">Test</button>
        <p>{this.state.query}</p>
-       {this.state.queriedCity && <h4>{this.state.queriedCity}</h4>}
+       {this.state.queriedCity && <div><h4>{this.state.queriedCity}</h4><button onClick={() => this.props.onAddSavedLocation(this.state.queriedCity)}>+</button></div>}
+     
+      {
+        this.props.savedLocations.map((location, i) => (
+          <h4 key={i} onClick={() => this.props.onSetCurrentLocation(location)}>{location}</h4>
+        ))}
+        
      </form>
    )
  }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(CitySearch);

@@ -17,9 +17,10 @@ const mapStateToProps = (state) => ({
   locationMessage: state.locations.message
 });
 
-const mapDispatchToProps = ({
-  onUpdateMessage: setCurrentLocation
-});
+const mapDispatchToProps = dispatch => ({
+  onUpdateMessage: (location, message) => dispatch(setCurrentLocation(location, message))
+})
+
 
 class App extends Component {
   constructor(props) {
@@ -47,8 +48,8 @@ class App extends Component {
       <div className="App">
       <p>{this.props.locationMessage}</p>
       
-    <button 
-      /*TODO: Make this work!!!!!! () => this.props.onUpdateMessage("city2", "this is from redux")*/></button>
+    <button onClick={() => this.props.onUpdateMessage("city2", "this is from redux")}
+>Click me</button>
         <ThemeContext.Provider value="light">
           <header className="App-header" theme={this.context} >
             <h2>Blue Sky Weather</h2>

@@ -11,10 +11,10 @@ export const setDefaultLocation = location => ({
     defaultLocation: location
 });
 
-export const addSavedLocation = location => ({
+export const addSavedLocation = savedLocation => ({
     type: 'ADD_SAVED_LOCATION',
-    savedLocation: location,
-    savedLocations: locationItemId++
+    savedLocation: savedLocation,
+    
 });
 
 export const deleteLocation = location => ({
