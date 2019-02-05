@@ -1,9 +1,10 @@
 let locationItemId = 0;
 
-export const setCurrentLocation = (location, message) => ({
+export const setCurrentLocation = (location, lat, lng) => ({
     type: 'SET_CURRENT_LOCATION',
-    location: location,
-    message: message
+    currentLocation: location,
+    currentLocationLat: lat,
+    currentLocationLng: lng
 });
 
 export const setDefaultLocation = location => ({

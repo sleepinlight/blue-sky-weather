@@ -14,7 +14,9 @@ const initialState = {
         return {
           ...state,
           isLoading: true,
-          currentLocation: action.location,
+          currentLocation: action.currentLocation,
+          currentLocationLat: action.currentLocationLat,
+          currentLocationLng: action.currentLocationLng,
           message: action.message
           
       };

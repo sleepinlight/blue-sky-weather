@@ -14,7 +14,8 @@ import {dayStateCalc, dayOfWeek, StoreLocation} from './utils/index';
 import './App.scss';
 
 const mapStateToProps = (state) => ({
-  locationMessage: state.locations.message
+  locationMessage: state.locations.message,
+  currentLocation: state.locations.currentLocation
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -46,10 +47,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <p>{this.props.locationMessage}</p>
-      
-    <button onClick={() => this.props.onUpdateMessage("city2", "this is from redux")}
->Click me</button>
+      <p>{this.props.currentLocation}</p>
         <ThemeContext.Provider value="light">
           <header className="App-header" theme={this.context} >
             <h2>Blue Sky Weather</h2>
@@ -67,7 +65,20 @@ class App extends Component {
     );
   }
   componentDidMount() {
-    this.determineLocation();
+    console.log("COMPONENT DID MOUNT");
+    if(this.props.currentLocation) { 
+      retrieveWeather(this.props.currentLocationLat, this.props.currentLocationLng, this.setCurrentForecast);
+    } else {
+      this.determineLocation();
+    }
+  }
+
+  componentDidUpdate() {
+    if(this.props.currentLocation) { 
+      console.log("lol firing");
+      retrieveWeather(this.props.currentLocationLat, this.props.currentLocationLng, this.setCurrentForecast);
+      console.log("from component did update: " + this.props.currentLocationLat);
+    }
   }
 
   determineLocation = () => {
