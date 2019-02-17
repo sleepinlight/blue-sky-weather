@@ -12,7 +12,7 @@ export const setDefaultLocation = location => ({
     defaultLocation: location
 });
 
-export const addSavedLocation = savedLocation => ({
+export const addSavedLocation = (savedLocation) => ({
     type: 'ADD_SAVED_LOCATION',
     savedLocation: savedLocation,
     

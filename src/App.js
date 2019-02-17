@@ -47,7 +47,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <p>{this.props.currentLocation}</p>
+      <p>{this.props.currentLocation.name}</p>
         <ThemeContext.Provider value="light">
           <header className="App-header" theme={this.context} >
             <h2>Blue Sky Weather</h2>
@@ -65,8 +65,8 @@ class App extends Component {
     );
   }
   componentDidMount() {
-    console.log("COMPONENT DID MOUNT");
-    if(this.props.currentLocation) { 
+    if(this.props.currentLocation !== "") { 
+      console.log("current loc: " + this.props.currentLocation);
       retrieveWeather(this.props.currentLocationLat, this.props.currentLocationLng, this.setCurrentForecast);
     } else {
       this.determineLocation();

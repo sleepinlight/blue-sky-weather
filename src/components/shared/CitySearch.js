@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onAddSavedLocation: (location, lat, lng) => dispatch(addSavedLocation(location, lat, lng)),
+  onAddSavedLocation: (location) => dispatch(addSavedLocation(location)),
   onSetCurrentLocation: (location, lat, lng) => dispatch(setCurrentLocation(location, lat, lng))
 })
 
@@ -46,8 +46,14 @@ updateCurrentCity = (resp) => {
 }
 
 handleQueriedLocation = (location, lat, lng) => {
-  this.props.onAddSavedLocation(location, lat, lng);
+  this.props.onAddSavedLocation(this.formatNewLocation(location, lat, lng));
   this.props.onSetCurrentLocation(location, lat, lng);
+  console.log('handle query!' + lat + lng);
+}
+
+formatNewLocation = (location, lat, lng) => {
+  const newLocation = {name: location, lat: lat, lng: lng};
+  return newLocation;
 }
 
  render() {
@@ -68,7 +74,7 @@ handleQueriedLocation = (location, lat, lng) => {
         </div>}
       {
         this.props.savedLocations.map((location, i) => (
-          <h4 key={i} onClick={() => this.props.onSetCurrentLocation(location)}>{location}</h4>
+          <h4 key={i} onClick={() => this.props.onSetCurrentLocation(location.name, location.lat, location.lng)}>{location.name}</h4>
         ))}
         
      </form>

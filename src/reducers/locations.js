@@ -1,8 +1,9 @@
-// Search Reducer
 const initialState = {
     payload: [],
     currentLocation: '',
-    savedLocations: ['Lake Charles'],
+    currentLocationLat: '',
+    currentLocationLng: '',
+    savedLocations: [{name: 'Lake Charles', lat: 30.2266, lng: 93.2174}],
     isLoading: false,
     error: {},
     message: "there is a fkn error"
@@ -10,7 +11,7 @@ const initialState = {
   export default function locations(state=initialState, action) {
     switch(action.type) {
       case 'SET_CURRENT_LOCATION':
-      console.log(state);
+      
         return {
           ...state,
           isLoading: true,
@@ -29,7 +30,7 @@ const initialState = {
         };
       
       case 'ADD_SAVED_LOCATION':
-      console.log('saved location reducer! ' + action.savedLocation);
+      
         return {
           ...state,
           savedLocations: [...state.savedLocations, action.savedLocation],
