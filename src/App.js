@@ -15,7 +15,9 @@ import './App.scss';
 
 const mapStateToProps = (state) => ({
   locationMessage: state.locations.message,
-  currentLocation: state.locations.currentLocation
+  currentLocation: state.locations.currentLocation,
+  currentLat: state.locations.currentLocationLat,
+  currentLng: state.locations.currentLocationLng
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -66,20 +68,17 @@ class App extends Component {
   }
   componentDidMount() {
     if(this.props.currentLocation !== "") { 
-      console.log("current loc: " + this.props.currentLocation);
-      retrieveWeather(this.props.currentLocationLat, this.props.currentLocationLng, this.setCurrentForecast);
+      retrieveWeather(this.props.currentLat, this.props.currentLng, this.setCurrentForecast);
     } else {
       this.determineLocation();
     }
   }
 
-  componentDidUpdate() {
-    if(this.props.currentLocation) { 
-      console.log("lol firing");
-      retrieveWeather(this.props.currentLocationLat, this.props.currentLocationLng, this.setCurrentForecast);
-      console.log("from component did update: " + this.props.currentLocationLat);
+  componentDidUpdate(prevProps) {
+    if(this.props.currentLocation !== prevProps.currentLocation) { 
+      retrieveWeather(this.props.currentLat, this.props.currentLng, this.setCurrentForecast);
     }
-  }
+  } 
 
   determineLocation = () => {
       if (navigator.geolocation) {

@@ -1,7 +1,6 @@
 import React from 'react';
 
 const StoreLocation = (locationName, locationObj) => {
-    console.log(locationObj);
     const cachedLat = locationObj.coords.latitude;
     const cachedLng = locationObj.coords.longitude;
     let cachedLocationString = `${cachedLat},${cachedLng}`

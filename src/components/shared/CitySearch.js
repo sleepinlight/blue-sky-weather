@@ -23,7 +23,6 @@ class CitySearch extends Component {
       queriedCityLng: ''
     };
   }
- 
 
  handleInputChange = () => {
    this.setState({
@@ -41,14 +40,12 @@ updateCurrentCity = (resp) => {
   let cityResult = resp.data.results[0].formatted_address;
   let cityLat = resp.data.results[0].geometry.location.lat;
   let cityLng = resp.data.results[0].geometry.location.lng;
-  console.log(resp.data.results[0].geometry.location.lat);
   this.setState({queriedCity: cityResult, queriedCityLat: cityLat, queriedCityLng: cityLng});
 }
 
 handleQueriedLocation = (location, lat, lng) => {
   this.props.onAddSavedLocation(this.formatNewLocation(location, lat, lng));
   this.props.onSetCurrentLocation(location, lat, lng);
-  console.log('handle query!' + lat + lng);
 }
 
 formatNewLocation = (location, lat, lng) => {
